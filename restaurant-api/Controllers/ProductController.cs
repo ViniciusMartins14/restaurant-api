@@ -32,6 +32,6 @@ public class ProductController : ControllerBase
         if (id != produto.Id) return BadRequest();
         _context.Entry(produto).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         _context.SaveChanges();
-        return NoContent();
+        return CreatedAtAction(nameof(CriarProduto), new { id = produto.Id }, produto);
     }
 }
