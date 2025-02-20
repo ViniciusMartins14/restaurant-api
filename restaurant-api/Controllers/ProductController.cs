@@ -34,4 +34,11 @@ public class ProductController : ControllerBase
         _context.SaveChanges();
         return CreatedAtAction(nameof(CriarProduto), new { id = produto.Id }, produto);
     }
+
+    [HttpGet]
+    public IActionResult ListarProdutos()
+    {
+        var produtos = _context.Products.ToList();
+        return Ok(produtos);
+    }
 }
